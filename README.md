@@ -1,8 +1,8 @@
 # Classical-Data-Structures-and-Algorithms
 Implementation of various classical data structures and algorithms in C++:
-1) Bidirectional List
+1) Double Linked List
 2) Dictionary
 3) Stack
-4) Binary search tree
+4) Binary Search Tree
 5) Queue
 6) Quick Sort
