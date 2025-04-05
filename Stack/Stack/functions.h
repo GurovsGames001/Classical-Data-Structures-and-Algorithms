@@ -1,4 +1,4 @@
-#include <string>
+﻿#include <string>
 
 bool checkBalanceBrackets(const std::string& text, const int maxDeep);
 bool getPostfixFromInfix(const std::string& infix, std::string& postfix, const size_t stackSize);

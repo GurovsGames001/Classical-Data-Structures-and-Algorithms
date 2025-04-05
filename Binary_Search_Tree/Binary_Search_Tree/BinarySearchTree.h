@@ -1,4 +1,4 @@
-#ifndef __BINARY_SEARCH_TREE_H
+п»ї#ifndef __BINARY_SEARCH_TREE_H
 #define __BINARY_SEARCH_TREE_H
 #include <iostream>
 #include "Stack.h"
@@ -7,86 +7,86 @@ template <class T>
 class BinarySearchTree
 {
 public:
-	// Конструктор "по умолчанию" создает пустое дерево
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ "РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" СЃРѕР·РґР°РµС‚ РїСѓСЃС‚РѕРµ РґРµСЂРµРІРѕ
 	BinarySearchTree() : root_(nullptr) {}
-	// Конструктор копирования
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	BinarySearchTree(const BinarySearchTree<T>& scr) = delete;
-	// Конструктор перемещения
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
 	BinarySearchTree(BinarySearchTree<T>&& scr) : root_(nullptr)
 	{
 		root_ = scr.root_;
 		scr.root_ = nullptr;
 	}
-	// Оператор присваивания с копированием
+	// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ СЃ РєРѕРїРёСЂРѕРІР°РЅРёРµРј
 	BinarySearchTree<T>& operator=(const BinarySearchTree<T>& src) = delete;
-	// Оператор перемещающего присваивания
+	// РћРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµС‰Р°СЋС‰РµРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	BinarySearchTree<T>& operator=(BinarySearchTree<T>&& src);
-	// Деструктор освобождает память, занятую узлами дерева
+	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РѕСЃРІРѕР±РѕР¶РґР°РµС‚ РїР°РјСЏС‚СЊ, Р·Р°РЅСЏС‚СѓСЋ СѓР·Р»Р°РјРё РґРµСЂРµРІР°
 	virtual ~BinarySearchTree();
 
-	// 1.1 Функция поиска по ключу в бинарном дереве поиска
+	// 1.1 Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РїРѕ РєР»СЋС‡Сѓ РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР°
 	bool iterativeSearch(const T& key) const;
-	// 2.1 Вставка нового элемента в дерево: true,если элемент добавлен;
-	// false, если элемент уже был
+	// 2.1 Р’СЃС‚Р°РІРєР° РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРѕ: true,РµСЃР»Рё СЌР»РµРјРµРЅС‚ РґРѕР±Р°РІР»РµРЅ;
+	// false, РµСЃР»Рё СЌР»РµРјРµРЅС‚ СѓР¶Рµ Р±С‹Р»
 	bool insert(const T& key);
-	// 3.1 Удаление элемента из дерева, не нарушающее порядка элементов
-	// true,если элемент удален; false, если элемента не было
+	// 3.1 РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РґРµСЂРµРІР°, РЅРµ РЅР°СЂСѓС€Р°СЋС‰РµРµ РїРѕСЂСЏРґРєР° СЌР»РµРјРµРЅС‚РѕРІ
+	// true,РµСЃР»Рё СЌР»РµРјРµРЅС‚ СѓРґР°Р»РµРЅ; false, РµСЃР»Рё СЌР»РµРјРµРЅС‚Р° РЅРµ Р±С‹Р»Рѕ
 	bool deleteKey(const T& key);
-	// 4.1 Печать строкового изображения дерева в выходной поток out
+	// 4.1 РџРµС‡Р°С‚СЊ СЃС‚СЂРѕРєРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР° РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє out
 	void print(std::ostream& out) const;
-	// 5.1 Определение количества узлов дерева
+	// 5.1 РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ РґРµСЂРµРІР°
 	int getCount() const;
-	// 6.1 Определение высоты дерева
+	// 6.1 РћРїСЂРµРґРµР»РµРЅРёРµ РІС‹СЃРѕС‚С‹ РґРµСЂРµРІР°
 	int getHeight() const;
-	// 7 Инфиксный обход дерева (итеративный)
+	// 7 РРЅС„РёРєСЃРЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР° (РёС‚РµСЂР°С‚РёРІРЅС‹Р№)
 	void iterativeInorderWalk() const;
-	// 8.1 Инфиксный обход дерева (рекурсивный)
+	// 8.1 РРЅС„РёРєСЃРЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР° (СЂРµРєСѓСЂСЃРёРІРЅС‹Р№)
 	void inorderWalk() const;
 
 private:
-	// Описание структуры узла со ссылками на детей
+	// РћРїРёСЃР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СѓР·Р»Р° СЃРѕ СЃСЃС‹Р»РєР°РјРё РЅР° РґРµС‚РµР№
 	template <class T>
 	struct Node {
-		T key_; // значение ключа, содержащееся в узле
-		Node<T>* left_; // указатель на левое поддерево
-		Node<T>* right_; // указатель на правое поддерево
-		Node<T>* p_; // указатель на родителя !!! не используется
-		// Конструктор узла
+		T key_; // Р·РЅР°С‡РµРЅРёРµ РєР»СЋС‡Р°, СЃРѕРґРµСЂР¶Р°С‰РµРµСЃСЏ РІ СѓР·Р»Рµ
+		Node<T>* left_; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
+		Node<T>* right_; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
+		Node<T>* p_; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЂРѕРґРёС‚РµР»СЏ !!! РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+		// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СѓР·Р»Р°
 		Node(T key, Node* left = nullptr, Node* right = nullptr, Node* p = nullptr) :
 			key_(key), left_(left), right_(right), p_(p)
 		{ }
 	};
 
-	Node<T>* root_; // Указатель на корневой узел
+	Node<T>* root_; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕСЂРЅРµРІРѕР№ СѓР·РµР»
 
-	// 1.2 Функция поиска адреса узла по ключу в бинарном дереве поиска
+	// 1.2 Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° Р°РґСЂРµСЃР° СѓР·Р»Р° РїРѕ РєР»СЋС‡Сѓ РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР°
 	Node<T>* iterativeSearchNode(const T& key) const;
-	// 4.2 Рекурсивная функция для вывода изображения дерева в выходной поток
+	// 4.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР° РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 	void printNode(std::ostream& out, Node<T>* root) const;
-	// 5.2 Рекурсивная функция определения количества узлов дерева
+	// 5.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ РґРµСЂРµРІР°
 	int getCount(const Node<T>* node) const;
-	// 6.2 Рекурсивная функция определения высоты дерева
+	// 6.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РІС‹СЃРѕС‚С‹ РґРµСЂРµРІР°
 	int getHeight(const Node<T>* node) const;
-	// 8.2 Рекурсивная функция для организации обхода узлов дерева.
+	// 8.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РѕСЂРіР°РЅРёР·Р°С†РёРё РѕР±С…РѕРґР° СѓР·Р»РѕРІ РґРµСЂРµРІР°.
 	void inorderWalk(Node<T>* node) const;
 
-	// Удаление дерева
+	// РЈРґР°Р»РµРЅРёРµ РґРµСЂРµРІР°
 	void deleteTree(Node<T>* node);
-	// Получение минимума
+	// РџРѕР»СѓС‡РµРЅРёРµ РјРёРЅРёРјСѓРјР°
 	Node<T>* getMin(Node<T>* node);
-	// Поиск последующего ключа
+	// РџРѕРёСЃРє РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РєР»СЋС‡Р°
 	Node<T>* findSuccessor(Node<T>* node);
 
-};  // конец шаблона класса TreeBinarySearchTree
+};  // РєРѕРЅРµС† С€Р°Р±Р»РѕРЅР° РєР»Р°СЃСЃР° TreeBinarySearchTree
 
-// Деструктор освобождает память, занятую узлами дерева
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РѕСЃРІРѕР±РѕР¶РґР°РµС‚ РїР°РјСЏС‚СЊ, Р·Р°РЅСЏС‚СѓСЋ СѓР·Р»Р°РјРё РґРµСЂРµРІР°
 template <class T>
 BinarySearchTree<T>::~BinarySearchTree()
 {
 	deleteTree(root_);
 }
 
-// Удаление дерева
+// РЈРґР°Р»РµРЅРёРµ РґРµСЂРµРІР°
 template <class T>
 void BinarySearchTree<T>::deleteTree(Node<T>* node)
 {
@@ -98,7 +98,7 @@ void BinarySearchTree<T>::deleteTree(Node<T>* node)
 	}
 }
 
-// Оператор перемещающего присваивания
+// РћРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµС‰Р°СЋС‰РµРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 template <class T>
 BinarySearchTree<T>& BinarySearchTree<T>::operator=(BinarySearchTree<T>&& src)
 {
@@ -106,14 +106,14 @@ BinarySearchTree<T>& BinarySearchTree<T>::operator=(BinarySearchTree<T>&& src)
 	src.root_ = nullptr;
 }
 
-// 1.1 Функция поиска по ключу в бинарном дереве поиска
+// 1.1 Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РїРѕ РєР»СЋС‡Сѓ РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР°
 template <class T>
 bool BinarySearchTree<T>::iterativeSearch(const T& key) const
 {
 	return (iterativeSearchNode(key) != nullptr);
 }
 
-// 1.2 Функция поиска адреса узла по ключу в бинарном дереве поиска
+// 1.2 Р¤СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° Р°РґСЂРµСЃР° СѓР·Р»Р° РїРѕ РєР»СЋС‡Сѓ РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР°
 template <class T>
 BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::iterativeSearchNode(const T& key) const
 {
@@ -133,14 +133,14 @@ BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::iterativeSearchNode(const T& 
 	return x;
 }
 
-// 2.1 Вставка нового элемента в дерево
+// 2.1 Р’СЃС‚Р°РІРєР° РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРѕ
 template <class T>
 bool BinarySearchTree<T>::insert(const T& key)
 {
 	Node<T>* x = root_;
 	Node<T>* prev = nullptr;
 
-	// Поиск места для вставки
+	// РџРѕРёСЃРє РјРµСЃС‚Р° РґР»СЏ РІСЃС‚Р°РІРєРё
 	while ((x != nullptr) && (x->key_ != key))
 	{
 		prev = x;
@@ -154,15 +154,15 @@ bool BinarySearchTree<T>::insert(const T& key)
 		}
 	}
 
-	if (x != nullptr) // Подобный элемент найден
+	if (x != nullptr) // РџРѕРґРѕР±РЅС‹Р№ СЌР»РµРјРµРЅС‚ РЅР°Р№РґРµРЅ
 	{
 		return 0;
 	}
-	else // Подобного элемента не найдено
+	else // РџРѕРґРѕР±РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РЅРµ РЅР°Р№РґРµРЅРѕ
 	{
 		Node<T>* newNode = new Node<T>(key);
 
-		if (prev == nullptr) // Дерево пустое
+		if (prev == nullptr) // Р”РµСЂРµРІРѕ РїСѓСЃС‚РѕРµ
 		{
 			root_ = newNode;
 		}
@@ -181,25 +181,25 @@ bool BinarySearchTree<T>::insert(const T& key)
 	}
 }
 
-// 3.1 Удаление элемента из дерева, не нарушающее порядка элементов
+// 3.1 РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РґРµСЂРµРІР°, РЅРµ РЅР°СЂСѓС€Р°СЋС‰РµРµ РїРѕСЂСЏРґРєР° СЌР»РµРјРµРЅС‚РѕРІ
 template <class T>
 bool BinarySearchTree<T>::deleteKey(const T& key)
 {
 	Node<T>* x = iterativeSearchNode(key);
 
-	if (x == nullptr) // Элемент не найден
+	if (x == nullptr) // Р­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
 	{
 		return 0;
 	}
-	else // Элемент найден
+	else // Р­Р»РµРјРµРЅС‚ РЅР°Р№РґРµРЅ
 	{
-		if ((x->left_ == nullptr) && (x->right_ == nullptr)) // У узла нет наследников
+		if ((x->left_ == nullptr) && (x->right_ == nullptr)) // РЈ СѓР·Р»Р° РЅРµС‚ РЅР°СЃР»РµРґРЅРёРєРѕРІ
 		{
-			if (x->p_ == nullptr) // Узел - корень
+			if (x->p_ == nullptr) // РЈР·РµР» - РєРѕСЂРµРЅСЊ
 			{
 				root_ = nullptr;
 			}
-			else // Узел - не корень
+			else // РЈР·РµР» - РЅРµ РєРѕСЂРµРЅСЊ
 			{
 				if (x->p_->left_ == nullptr)
 				{
@@ -218,16 +218,16 @@ bool BinarySearchTree<T>::deleteKey(const T& key)
 				}
 			}
 		}
-		else // У узла есть наследники
+		else // РЈ СѓР·Р»Р° РµСЃС‚СЊ РЅР°СЃР»РµРґРЅРёРєРё
 		{
-			if ((x->left_ != nullptr) && (x->right_ == nullptr)) // У узла один наследник слева
+			if ((x->left_ != nullptr) && (x->right_ == nullptr)) // РЈ СѓР·Р»Р° РѕРґРёРЅ РЅР°СЃР»РµРґРЅРёРє СЃР»РµРІР°
 			{
-				if (x->p_ == nullptr) // Узел - корень
+				if (x->p_ == nullptr) // РЈР·РµР» - РєРѕСЂРµРЅСЊ
 				{
 					root_ = x->left_;
 					x->left_->p_ = nullptr;
 				}
-				else // Узел - не корень
+				else // РЈР·РµР» - РЅРµ РєРѕСЂРµРЅСЊ
 				{
 					if (x->p_->left_ == nullptr)
 					{
@@ -248,14 +248,14 @@ bool BinarySearchTree<T>::deleteKey(const T& key)
 					x->left_->p_ = x->p_;
 				}
 			}
-			else if ((x->left_ == nullptr) && (x->right_ != nullptr)) // У узла один наследник справа
+			else if ((x->left_ == nullptr) && (x->right_ != nullptr)) // РЈ СѓР·Р»Р° РѕРґРёРЅ РЅР°СЃР»РµРґРЅРёРє СЃРїСЂР°РІР°
 			{
-				if (x->p_ == nullptr) // Узел - корень
+				if (x->p_ == nullptr) // РЈР·РµР» - РєРѕСЂРµРЅСЊ
 				{
 					root_ = x->right_;
 					x->right_->p_ = nullptr;
 				}
-				else // Узел - не корень
+				else // РЈР·РµР» - РЅРµ РєРѕСЂРµРЅСЊ
 				{
 					if (x->p_->left_ == nullptr)
 					{
@@ -276,11 +276,11 @@ bool BinarySearchTree<T>::deleteKey(const T& key)
 					x->right_->p_ = x->p_;
 				}
 			}
-			else // У узла оба наследника
+			else // РЈ СѓР·Р»Р° РѕР±Р° РЅР°СЃР»РµРґРЅРёРєР°
 			{
-				Node<T>* nextNode = findSuccessor(x); // Поиск последующего узла
+				Node<T>* nextNode = findSuccessor(x); // РџРѕРёСЃРє РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р°
 
-				if ((nextNode->left_ == nullptr) && (nextNode->right_ == nullptr)) // У последующего узла нет наследников
+				if ((nextNode->left_ == nullptr) && (nextNode->right_ == nullptr)) // РЈ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р° РЅРµС‚ РЅР°СЃР»РµРґРЅРёРєРѕРІ
 				{
 					x->key_ = nextNode->key_;
 
@@ -293,7 +293,7 @@ bool BinarySearchTree<T>::deleteKey(const T& key)
 						nextNode->p_->left_ = nullptr;
 					}
 				}
-				else // У последующего узла есть один наследник (справа)
+				else // РЈ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р° РµСЃС‚СЊ РѕРґРёРЅ РЅР°СЃР»РµРґРЅРёРє (СЃРїСЂР°РІР°)
 				{
 					x->key_ = nextNode->key_;
 
@@ -318,13 +318,13 @@ bool BinarySearchTree<T>::deleteKey(const T& key)
 	}
 }
 
-// 4.1 Печать строкового изображения дерева в выходной поток out
+// 4.1 РџРµС‡Р°С‚СЊ СЃС‚СЂРѕРєРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР° РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє out
 template <class T>
 void BinarySearchTree<T>::print(std::ostream& out) const
 {
 	if (root_ == nullptr)
 	{
-		out << "пустое дерево";
+		out << "РїСѓСЃС‚РѕРµ РґРµСЂРµРІРѕ";
 	}
 	else
 	{
@@ -333,7 +333,7 @@ void BinarySearchTree<T>::print(std::ostream& out) const
 	out << '\n';
 }
 
-// 4.2 Рекурсивная функция для вывода изображения дерева в выходной поток
+// 4.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР° РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 template <class T>
 void BinarySearchTree<T>::printNode(std::ostream& out, Node<T>* root) const
 {
@@ -346,14 +346,14 @@ void BinarySearchTree<T>::printNode(std::ostream& out, Node<T>* root) const
 	}
 }
 
-// 5.1 Определение количества узлов дерева
+// 5.1 РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ РґРµСЂРµРІР°
 template <class T>
 int BinarySearchTree<T>::getCount() const
 {
 	return getCount(this->root_);
 }
 
-// 5.2 Рекурсивная функция определения количества узлов дерева
+// 5.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ РґРµСЂРµРІР°
 template <class T>
 int BinarySearchTree<T>::getCount(const Node<T>* node) const
 {
@@ -365,14 +365,14 @@ int BinarySearchTree<T>::getCount(const Node<T>* node) const
 	return (1 + getCount(node->left_) + getCount(node->right_));
 }
 
-// 6.1 Определение высоты дерева
+// 6.1 РћРїСЂРµРґРµР»РµРЅРёРµ РІС‹СЃРѕС‚С‹ РґРµСЂРµРІР°
 template <class T>
 int BinarySearchTree<T>::getHeight() const
 {
 	return getHeight(this->root_) - 1;
 }
 
-// 6.2 Рекурсивная функция определения высоты дерева
+// 6.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РІС‹СЃРѕС‚С‹ РґРµСЂРµРІР°
 template <class T>
 int BinarySearchTree<T>::getHeight(const Node<T>* node) const
 {
@@ -384,7 +384,7 @@ int BinarySearchTree<T>::getHeight(const Node<T>* node) const
 	return (1 + std::max(getHeight(node->left_), getHeight(node->right_)));
 }
 
-// Получение минимума
+// РџРѕР»СѓС‡РµРЅРёРµ РјРёРЅРёРјСѓРјР°
 template <class T>
 BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::getMin(Node<T>* node)
 {
@@ -396,7 +396,7 @@ BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::getMin(Node<T>* node)
 	return node;
 }
 
-// Поиск последующего ключа
+// РџРѕРёСЃРє РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РєР»СЋС‡Р°
 template <class T>
 BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::findSuccessor(Node<T>* node)
 {
@@ -415,13 +415,13 @@ BinarySearchTree<T>::Node<T>* BinarySearchTree<T>::findSuccessor(Node<T>* node)
 	return prev;
 }
 
-// 7 Инфиксный обход дерева (итеративный)
+// 7 РРЅС„РёРєСЃРЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР° (РёС‚РµСЂР°С‚РёРІРЅС‹Р№)
 template <class T>
 void BinarySearchTree<T>::iterativeInorderWalk() const
 {
 	if (root_ == nullptr)
 	{
-		std::cout << "пустое дерево";
+		std::cout << "РїСѓСЃС‚РѕРµ РґРµСЂРµРІРѕ";
 	}
 	else
 	{
@@ -445,13 +445,13 @@ void BinarySearchTree<T>::iterativeInorderWalk() const
 	std::cout << '\n';
 }
 
-// 8.1 Инфиксный обход дерева (рекурсивный)
+// 8.1 РРЅС„РёРєСЃРЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР° (СЂРµРєСѓСЂСЃРёРІРЅС‹Р№)
 template <class T>
 void BinarySearchTree<T>::inorderWalk() const
 {
 	if (root_ == nullptr)
 	{
-		std::cout << "пустое дерево";
+		std::cout << "РїСѓСЃС‚РѕРµ РґРµСЂРµРІРѕ";
 	}
 	else
 	{
@@ -460,7 +460,7 @@ void BinarySearchTree<T>::inorderWalk() const
 	std::cout << '\n';
 }
 
-// 8.2 Рекурсивная функция для организации обхода узлов дерева.
+// 8.2 Р РµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РѕСЂРіР°РЅРёР·Р°С†РёРё РѕР±С…РѕРґР° СѓР·Р»РѕРІ РґРµСЂРµРІР°.
 template <class T>
 void BinarySearchTree<T>::inorderWalk(Node<T>* node) const
 {

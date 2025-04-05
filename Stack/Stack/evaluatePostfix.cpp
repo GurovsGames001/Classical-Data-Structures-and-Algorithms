@@ -1,4 +1,4 @@
-#include "functions.h"
+﻿#include "functions.h"
 #include "Stack.h"
 
 int evaluatePostfix(const std::string& infix, const size_t stackSize)

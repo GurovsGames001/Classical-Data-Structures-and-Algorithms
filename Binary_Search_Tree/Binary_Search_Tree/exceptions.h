@@ -1,9 +1,9 @@
-#ifndef __EXCEPTION
+п»ї#ifndef __EXCEPTION
 #define __EXCEPTION
 #include <exception>
 
-// Классы StackOverflow и StackUnderflow представляют две основные
-// исключительные ситуации, которые могут возникнуть при работе со стеком
+// РљР»Р°СЃСЃС‹ StackOverflow Рё StackUnderflow РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‚ РґРІРµ РѕСЃРЅРѕРІРЅС‹Рµ
+// РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅС‹Рµ СЃРёС‚СѓР°С†РёРё, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРѕР·РЅРёРєРЅСѓС‚СЊ РїСЂРё СЂР°Р±РѕС‚Рµ СЃРѕ СЃС‚РµРєРѕРј
 class StackOverflow : public std::exception
 {
 public:

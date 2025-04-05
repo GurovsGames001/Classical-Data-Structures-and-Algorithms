@@ -1,52 +1,52 @@
-#ifndef __SINGLY_ORDERED_LIST
+п»ї#ifndef __SINGLY_ORDERED_LIST
 #define __SINGLY_ORDERED_LIST
 #include <iostream>
 
 class SinglyOrderedList
 {
 private:
-    // Тип  Node используется для описания элемента списка, связанного со 
-    // следующим с помощью поля next_ и предшествующим с помощью поле prev_
-    struct Node         // может использоваться  только в классе DoubleLinkedList
+    // РўРёРї  Node РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°, СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃРѕ 
+    // СЃР»РµРґСѓСЋС‰РёРј СЃ РїРѕРјРѕС‰СЊСЋ РїРѕР»СЏ next_ Рё РїСЂРµРґС€РµСЃС‚РІСѓСЋС‰РёРј СЃ РїРѕРјРѕС‰СЊСЋ РїРѕР»Рµ prev_
+    struct Node         // РјРѕР¶РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ  С‚РѕР»СЊРєРѕ РІ РєР»Р°СЃСЃРµ DoubleLinkedList
     {
-        int item_;        // значение элемента списка
-        Node* next_;      // указатель на следующий элемент списка
+        int item_;        // Р·РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°
+        Node* next_;      // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
 
-        // Конструктор для создания нового элемента списка. 
+        // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°. 
         Node(int item, Node* next = nullptr) : item_(item), next_(next) { }
     };
 
-    int count_;         // счетчик числа элементов
-    Node* head_;        // первый элемент списка
-    Node* tail_;        // последний элемент списка
+    int count_;         // СЃС‡РµС‚С‡РёРє С‡РёСЃР»Р° СЌР»РµРјРµРЅС‚РѕРІ
+    Node* head_;        // РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+    Node* tail_;        // РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
 
     void swap(SinglyOrderedList& other) noexcept;
 
-    bool insertNode(Node* item); // Добавить узёл
-    Node* searchNode(int item) const; // Найти узёл
+    bool insertNode(Node* item); // Р”РѕР±Р°РІРёС‚СЊ СѓР·С‘Р»
+    Node* searchNode(int item) const; // РќР°Р№С‚Рё СѓР·С‘Р»
 
 public:
-    // Конструктор "по умолчанию" - создание пустого списка
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ "РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" - СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ СЃРїРёСЃРєР°
     SinglyOrderedList() : head_(nullptr), tail_(nullptr), count_(0) {};
-    // Конструктор копирования
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
     SinglyOrderedList(const SinglyOrderedList& src);
-    // Деструктор
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~SinglyOrderedList();
     
-    bool insert(int item); // Добавить элемент
-    bool search(int item) const; // Найти элемент
-    bool deleteItem(int item); // Удалить элемент
+    bool insert(int item); // Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
+    bool search(int item) const; // РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚
+    bool deleteItem(int item); // РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚
     void print();
 
-    void merge(SinglyOrderedList& list); // Объединение
-    void subtract(const SinglyOrderedList& list); // Вычитание
+    void merge(SinglyOrderedList& list); // РћР±СЉРµРґРёРЅРµРЅРёРµ
+    void subtract(const SinglyOrderedList& list); // Р’С‹С‡РёС‚Р°РЅРёРµ
 
-    friend SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList& list2); // Пересечение
+    friend SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList& list2); // РџРµСЂРµСЃРµС‡РµРЅРёРµ
 
-    SinglyOrderedList& operator=(const SinglyOrderedList& right); // Оператор присваивания (копирующее присваивание)
-    bool operator==(const SinglyOrderedList& list) const; // Оператор сравнения
+    SinglyOrderedList& operator=(const SinglyOrderedList& right); // РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ (РєРѕРїРёСЂСѓСЋС‰РµРµ РїСЂРёСЃРІР°РёРІР°РЅРёРµ)
+    bool operator==(const SinglyOrderedList& list) const; // РћРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
 
-    friend std::ostream& operator<<(std::ostream& out, SinglyOrderedList& list); // Оператор вывода
+    friend std::ostream& operator<<(std::ostream& out, SinglyOrderedList& list); // РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°
 };
 
 #endif

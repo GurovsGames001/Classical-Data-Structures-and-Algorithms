@@ -1,13 +1,13 @@
-#include "SinglyOrderedList.h"
+п»ї#include "SinglyOrderedList.h"
 
-// Конструктор копирования
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 SinglyOrderedList::SinglyOrderedList(const SinglyOrderedList& src) : count_(0), head_(nullptr), tail_(nullptr)
 {
 	Node* temp = src.head_;
-	// Пока не конец списка:
+	// РџРѕРєР° РЅРµ РєРѕРЅРµС† СЃРїРёСЃРєР°:
 	while (temp != nullptr)
 	{
-		// Копируем данные:
+		// РљРѕРїРёСЂСѓРµРј РґР°РЅРЅС‹Рµ:
 		insert(temp->item_);
 		temp = temp->next_;
 	}
@@ -21,11 +21,11 @@ void SinglyOrderedList::swap(SinglyOrderedList& other) noexcept
 }
 
 
-// Добавить узёл
+// Р”РѕР±Р°РІРёС‚СЊ СѓР·С‘Р»
 bool SinglyOrderedList::insertNode(Node* newNode)
 {
 	if (head_ != nullptr) {
-		// список был НЕ пуст
+		// СЃРїРёСЃРѕРє Р±С‹Р» РќР• РїСѓСЃС‚
 		if (newNode->item_ > tail_->item_)
 		{
 			tail_->next_ = newNode;
@@ -59,7 +59,7 @@ bool SinglyOrderedList::insertNode(Node* newNode)
 		}
 	}
 	else {
-		// список был пуст – новый элемент будет и первым, и последним
+		// СЃРїРёСЃРѕРє Р±С‹Р» РїСѓСЃС‚ вЂ“ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Р±СѓРґРµС‚ Рё РїРµСЂРІС‹Рј, Рё РїРѕСЃР»РµРґРЅРёРј
 		head_ = newNode;
 		tail_ = newNode;
 		count_++;
@@ -69,7 +69,7 @@ bool SinglyOrderedList::insertNode(Node* newNode)
 	return 0;
 }
 
-// Найти узёл
+// РќР°Р№С‚Рё СѓР·С‘Р»
 SinglyOrderedList::Node* SinglyOrderedList::searchNode(int item) const
 {
 	Node* temp = head_;
@@ -90,25 +90,25 @@ SinglyOrderedList::Node* SinglyOrderedList::searchNode(int item) const
 	return temp;
 }
 
-// Добавить элемент
+// Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 bool SinglyOrderedList::insert(int item)
 {
 	return (insertNode(new Node(item)));
 }
 
-// Найти элемент
+// РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚
 bool SinglyOrderedList::search(int item) const
 {
 	return (searchNode(item) != nullptr);
 }
 
-// Удалить элемент
+// РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚
 bool SinglyOrderedList::deleteItem(int item)
 {
 	Node* temp1 = head_;
 	Node* temp2 = head_;
 
-	// Поиск нужного элемента
+	// РџРѕРёСЃРє РЅСѓР¶РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 	while (temp1 != nullptr)
 	{
 		if (temp1->item_ == item)
@@ -124,27 +124,27 @@ bool SinglyOrderedList::deleteItem(int item)
 	{
 		if (temp1 == head_)
 		{
-			// удаляется голова списка,  второй элемент становится первым
+			// СѓРґР°Р»СЏРµС‚СЃСЏ РіРѕР»РѕРІР° СЃРїРёСЃРєР°,  РІС‚РѕСЂРѕР№ СЌР»РµРјРµРЅС‚ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РїРµСЂРІС‹Рј
 			head_ = temp1->next_;
 		}
 		else
 		{
-			// удаляется НЕ голова
+			// СѓРґР°Р»СЏРµС‚СЃСЏ РќР• РіРѕР»РѕРІР°
 			if (temp1->item_ != tail_->item_)
 			{
-				// удаляется НЕ хвост
+				// СѓРґР°Р»СЏРµС‚СЃСЏ РќР• С…РІРѕСЃС‚
 				temp2->next_ = temp1->next_;
 			}
 			else
 			{
-				// удаляется хвост
+				// СѓРґР°Р»СЏРµС‚СЃСЏ С…РІРѕСЃС‚
 				tail_ = temp2;
 				tail_->next_ = nullptr;
 			}
 		}
 
 		delete temp1;
-		count_--;     // число элементов списка уменьшилось
+		count_--;     // С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР° СѓРјРµРЅСЊС€РёР»РѕСЃСЊ
 
 		return 1;
 	}
@@ -158,7 +158,7 @@ void SinglyOrderedList::print()
 
 	if (temp == nullptr)
 	{
-		std::cout << "пустой список";
+		std::cout << "РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє";
 	}
 	while (temp != nullptr)
 	{
@@ -169,7 +169,7 @@ void SinglyOrderedList::print()
 	std::cout << '\n';
 }
 
-// Объединение
+// РћР±СЉРµРґРёРЅРµРЅРёРµ
 void SinglyOrderedList::merge(SinglyOrderedList& list)
 {
 	Node* temp1 = head_;
@@ -178,7 +178,7 @@ void SinglyOrderedList::merge(SinglyOrderedList& list)
 
 	while ((temp1 != nullptr) && (temp3 != nullptr))
 	{
-		if (temp3->item_ == temp1->item_) // удаление совпадающего элемента во втором списке
+		if (temp3->item_ == temp1->item_) // СѓРґР°Р»РµРЅРёРµ СЃРѕРІРїР°РґР°СЋС‰РµРіРѕ СЌР»РµРјРµРЅС‚Р° РІРѕ РІС‚РѕСЂРѕРј СЃРїРёСЃРєРµ
 		{
 			Node* current = temp3;
 			temp3 = temp3->next_;
@@ -197,13 +197,13 @@ void SinglyOrderedList::merge(SinglyOrderedList& list)
 			count_++;
 			list.count_--;
 
-			if (temp1->item_ != head_->item_) // добавление элемента в середину
+			if (temp1->item_ != head_->item_) // РґРѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ СЃРµСЂРµРґРёРЅСѓ
 			{
 				current->next_ = temp1;
 				temp2->next_ = current;
 				temp2 = current;
 			}
-			else // добавление головы
+			else // РґРѕР±Р°РІР»РµРЅРёРµ РіРѕР»РѕРІС‹
 			{
 				current->next_ = head_;
 				head_ = current;
@@ -211,14 +211,14 @@ void SinglyOrderedList::merge(SinglyOrderedList& list)
 		}
 	}
 
-	// добавление оставшихся элементов
+	// РґРѕР±Р°РІР»РµРЅРёРµ РѕСЃС‚Р°РІС€РёС…СЃСЏ СЌР»РµРјРµРЅС‚РѕРІ
 	if (temp3 != nullptr)
 	{
-		if (tail_ != nullptr) // если первый список не пуст
+		if (tail_ != nullptr) // РµСЃР»Рё РїРµСЂРІС‹Р№ СЃРїРёСЃРѕРє РЅРµ РїСѓСЃС‚
 		{
 			tail_->next_ = temp3;
 		}
-		else // если первый список пуст
+		else // РµСЃР»Рё РїРµСЂРІС‹Р№ СЃРїРёСЃРѕРє РїСѓСЃС‚
 		{
 			head_ = temp3;
 		}
@@ -232,7 +232,7 @@ void SinglyOrderedList::merge(SinglyOrderedList& list)
 	list.count_ = 0;
 }
 
-// Вычитание
+// Р’С‹С‡РёС‚Р°РЅРёРµ
 void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 {
 	Node* temp1 = head_;
@@ -240,7 +240,7 @@ void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 	Node* temp3 = list.head_;
 	Node* current = nullptr;
 
-	// Цикл для головы
+	// Р¦РёРєР» РґР»СЏ РіРѕР»РѕРІС‹
 	while ((temp1 == head_) && (temp1 != nullptr) && (temp3 != nullptr))
 	{
 		if (temp1->item_ > temp3->item_)
@@ -251,7 +251,7 @@ void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 		{
 			temp1 = temp1->next_;
 		}
-		else // удаление головы
+		else // СѓРґР°Р»РµРЅРёРµ РіРѕР»РѕРІС‹
 		{
 			current = temp1;
 			head_ = temp1->next_;
@@ -263,7 +263,7 @@ void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 		}
 	}
 
-	// Цикл после головы
+	// Р¦РёРєР» РїРѕСЃР»Рµ РіРѕР»РѕРІС‹
 	while ((temp1 != nullptr) && (temp3 != nullptr))
 	{
 		if (temp1->item_ > temp3->item_)
@@ -279,12 +279,12 @@ void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 		{
 			current = temp1;
 
-			if (temp1 == tail_) // удаление хвоста
+			if (temp1 == tail_) // СѓРґР°Р»РµРЅРёРµ С…РІРѕСЃС‚Р°
 			{
 				tail_ = temp2;
 				tail_->next_ = nullptr;
 			}
-			else // удаление элемента из середины
+			else // СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· СЃРµСЂРµРґРёРЅС‹
 			{
 				temp2->next_ = temp1->next_;
 			}
@@ -297,7 +297,7 @@ void SinglyOrderedList::subtract(const SinglyOrderedList& list)
 	}
 }
 
-// Пересечение
+// РџРµСЂРµСЃРµС‡РµРЅРёРµ
 SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList& list2)
 {
 	SinglyOrderedList newList;
@@ -305,7 +305,7 @@ SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList&
 	SinglyOrderedList::Node* temp1 = list1.head_;
 	SinglyOrderedList::Node* temp2 = list2.head_;
 
-	// Цикл для добавления в новый список головы
+	// Р¦РёРєР» РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РІ РЅРѕРІС‹Р№ СЃРїРёСЃРѕРє РіРѕР»РѕРІС‹
 	while ((newList.head_ == nullptr) && (temp1 != nullptr) && (temp2 != nullptr))
 	{
 		if (temp1->item_ < temp2->item_)
@@ -328,7 +328,7 @@ SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList&
 
 	SinglyOrderedList::Node* temp3 = newList.head_;
 
-	// Цикл для добавления в новый список других элементов
+	// Р¦РёРєР» РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РІ РЅРѕРІС‹Р№ СЃРїРёСЃРѕРє РґСЂСѓРіРёС… СЌР»РµРјРµРЅС‚РѕРІ
 	while ((temp1 != nullptr) && (temp2 != nullptr))
 	{
 		if (temp1->item_ < temp2->item_)
@@ -355,17 +355,17 @@ SinglyOrderedList cross(const SinglyOrderedList& list1, const SinglyOrderedList&
 	return newList;
 }
 
-// Оператор присваивания (копирующее присваивание)
+// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ (РєРѕРїРёСЂСѓСЋС‰РµРµ РїСЂРёСЃРІР°РёРІР°РЅРёРµ)
 SinglyOrderedList& SinglyOrderedList::operator=(const SinglyOrderedList& right)
 {
 	if (this != &right) {
-		SinglyOrderedList temp(right); // temp копия right операнда
-		swap(temp);        // теперь this копия right, а temp копия this
-	}                    // удаление temp c данными старого this
+		SinglyOrderedList temp(right); // temp РєРѕРїРёСЏ right РѕРїРµСЂР°РЅРґР°
+		swap(temp);        // С‚РµРїРµСЂСЊ this РєРѕРїРёСЏ right, Р° temp РєРѕРїРёСЏ this
+	}                    // СѓРґР°Р»РµРЅРёРµ temp c РґР°РЅРЅС‹РјРё СЃС‚Р°СЂРѕРіРѕ this
 	return *this;
 }
 
-// Оператор сравнения
+// РћРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ
 bool SinglyOrderedList::operator==(const SinglyOrderedList& list) const
 {
 	bool isTrue = false;
@@ -386,13 +386,13 @@ bool SinglyOrderedList::operator==(const SinglyOrderedList& list) const
 	return isTrue;
 }
 
-// Оператор вывода
+// РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°
 std::ostream& operator<<(std::ostream& out, SinglyOrderedList& list)
 {
 	SinglyOrderedList::Node* current = list.head_;
 	if (current == nullptr)
 	{
-		out << "пустой словарь" << '\n';
+		out << "РїСѓСЃС‚РѕР№ СЃР»РѕРІР°СЂСЊ" << '\n';
 	}
 	while (current != nullptr)
 	{
@@ -404,14 +404,14 @@ std::ostream& operator<<(std::ostream& out, SinglyOrderedList& list)
 	return out;
 }
 
-// Деструктор
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 SinglyOrderedList::~SinglyOrderedList()
 {
-	Node* current = nullptr;   // указатель на элемент, подлежащий удалению
-	Node* next = head_;        // указатель на следующий элемент
-	while (next != nullptr) {  // пока есть еще элементы в списке
+	Node* current = nullptr;   // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЌР»РµРјРµРЅС‚, РїРѕРґР»РµР¶Р°С‰РёР№ СѓРґР°Р»РµРЅРёСЋ
+	Node* next = head_;        // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
+	while (next != nullptr) {  // РїРѕРєР° РµСЃС‚СЊ РµС‰Рµ СЌР»РµРјРµРЅС‚С‹ РІ СЃРїРёСЃРєРµ
 		current = next;
-		next = next->next_;    // переход к следующему элементу
-		delete current;        // освобождение памяти
+		next = next->next_;    // РїРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЌР»РµРјРµРЅС‚Сѓ
+		delete current;        // РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
 	}
 }

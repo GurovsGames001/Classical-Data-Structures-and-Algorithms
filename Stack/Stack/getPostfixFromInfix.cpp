@@ -1,4 +1,4 @@
-#include "functions.h"
+Ôªø#include "functions.h"
 #include "Stack.h"
 #include "exceptions.h"
 
@@ -31,7 +31,7 @@ inline int getPriority(const char sign)
 	return priority;
 }
 
-bool getPostfixFromInfix(const std::string& infix, std::string& postfix, const size_t stackSize) // !!! ƒŒƒ≈À¿“‹ !!!
+bool getPostfixFromInfix(const std::string& infix, std::string& postfix, const size_t stackSize) // !!! –î–û–î–ï–õ–ê–¢–¨ !!!
 {
 	bool isCorrectBalanceBrackets = true;
 	StackArray<char> stack(stackSize);
@@ -131,7 +131,7 @@ bool getPostfixFromInfix(const std::string& infix, std::string& postfix, const s
 			}
 			else
 			{
-				throw Invalid—haracters();
+				throw Invalid–°haracters();
 			}
 			break;
 		}

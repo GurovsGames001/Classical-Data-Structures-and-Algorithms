@@ -1,8 +1,8 @@
-#ifndef _EXCEPTIONS
+Ôªø#ifndef _EXCEPTIONS
 #define _EXCEPTIONS
 #include <exception>
 
-// *************** Œ◊≈–≈ƒ‹ ***************
+// *************** –û–ß–ï–†–ï–î–¨ ***************
 
 class WrongQueueSize : public std::exception
 {
@@ -31,7 +31,7 @@ private:
 	const char* reason_;
 };
 
-// *************** —“≈  ***************
+// *************** –°–¢–ï–ö ***************
 
 class StackOverflow : public std::exception
 {

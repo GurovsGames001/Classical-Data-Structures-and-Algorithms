@@ -1,4 +1,4 @@
-#include "BinarySearchTree.h"
+п»ї#include "BinarySearchTree.h"
 #include "testFunction.h"
 #include <iostream>
 
@@ -6,7 +6,7 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	// Создание дерева для тестов
+	// РЎРѕР·РґР°РЅРёРµ РґРµСЂРµРІР° РґР»СЏ С‚РµСЃС‚РѕРІ
 	BinarySearchTree<int> tree1;
 	tree1.insert(7);
 	tree1.insert(4);
@@ -16,7 +16,7 @@ int main()
 	tree1.insert(8);
 	tree1.insert(10);
 
-	// Тесты
+	// РўРµСЃС‚С‹
 	testIterativeSearch(tree1);
 	testInsert(tree1);
 	testDeleteKey();

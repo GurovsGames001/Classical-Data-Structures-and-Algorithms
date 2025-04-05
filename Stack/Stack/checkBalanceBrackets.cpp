@@ -1,4 +1,4 @@
-#include "functions.h"
+﻿#include "functions.h"
 #include "Stack.h"
 
 bool checkBalanceBrackets(const std::string& text, const int maxDeep)

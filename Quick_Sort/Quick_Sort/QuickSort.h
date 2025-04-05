@@ -1,4 +1,4 @@
-#ifndef _QUICK_SORT
+ï»¿#ifndef _QUICK_SORT
 #define _QUICK_SORT
 #include <iostream>
 
@@ -9,7 +9,7 @@ struct QuickSort
 	{
 		int nOperation = 0;
 		sort(array, p, r, nOperation);
-		std::cout << "Îöåíêà ñëîæíîñòè: " << nOperation << std::endl;
+		std::cout << "ÐžÑ†ÐµÐ½ÐºÐ° ÑÐ»Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸: " << nOperation << std::endl;
 	}
 
 private:

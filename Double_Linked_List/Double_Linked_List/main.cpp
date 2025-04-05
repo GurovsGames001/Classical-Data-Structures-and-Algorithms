@@ -1,5 +1,5 @@
-//
-// Примеры использования класса DoubleLinkedList
+п»ї//
+// РџСЂРёРјРµСЂС‹ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєР»Р°СЃСЃР° DoubleLinkedList
 //
 #include "DoubleLinkedList.h"
 #include "functionTests.h"
@@ -10,7 +10,7 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	// Функции-тесты
+	// Р¤СѓРЅРєС†РёРё-С‚РµСЃС‚С‹
 	testInsertTail();
 	testDeleteTail();
 	testDeleteItem();

@@ -1,4 +1,4 @@
-#ifndef _QUEUE
+п»ї#ifndef _QUEUE
 #define _QUEUE
 #include <memory>
 #include "exceptions.h"
@@ -8,10 +8,10 @@ class Queue
 {
 public:
 	virtual ~Queue() {};
-	virtual void enQueue(const T& e) = 0; // Добавление элемента
-	virtual T deQueue() = 0; // Удаление и возвращение элемента
-	virtual bool isEmpty() = 0; // Проверка на пустоту
-	virtual void print() = 0; // Вывод очереди
+	virtual void enQueue(const T& e) = 0; // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	virtual T deQueue() = 0; // РЈРґР°Р»РµРЅРёРµ Рё РІРѕР·РІСЂР°С‰РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	virtual bool isEmpty() = 0; // РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	virtual void print() = 0; // Р’С‹РІРѕРґ РѕС‡РµСЂРµРґРё
 };
 
 template <class T>
@@ -21,10 +21,10 @@ public:
 	QueueArray(size_t size = 100);
 	~QueueArray() {};
 
-	void enQueue(const T& e) override; // Добавление элемента
-	T deQueue() override; // Удаление и возвращение элемента
-	bool isEmpty() override { return ((head_ == tail_) && !(isOverflow_)); }; // Проверка на пустоту
-	void print() override; // Вывод очереди
+	void enQueue(const T& e) override; // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	T deQueue() override; // РЈРґР°Р»РµРЅРёРµ Рё РІРѕР·РІСЂР°С‰РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	bool isEmpty() override { return ((head_ == tail_) && !(isOverflow_)); }; // РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	void print() override; // Р’С‹РІРѕРґ РѕС‡РµСЂРµРґРё
 private:
 	std::unique_ptr<T[]> array_;
 	size_t size_;
@@ -46,11 +46,11 @@ QueueArray<T>::QueueArray(size_t size) : size_(size), head_(1), tail_(1), isOver
 	}
 }
 
-// Добавление элемента
+// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
 template <class T>
 void QueueArray<T>::enQueue(const T& e)
 {
-	if (isOverflow_) // Очередь переполнена
+	if (isOverflow_) // РћС‡РµСЂРµРґСЊ РїРµСЂРµРїРѕР»РЅРµРЅР°
 	{
 		throw QueueOverflow();
 	}
@@ -74,11 +74,11 @@ void QueueArray<T>::enQueue(const T& e)
 	}
 }
 
-// Удаление и возвращение элемента
+// РЈРґР°Р»РµРЅРёРµ Рё РІРѕР·РІСЂР°С‰РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
 template <class T>
 T QueueArray<T>::deQueue()
 {
-	if (isEmpty()) // Очередь пустая
+	if (isEmpty()) // РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ
 	{
 		throw QueueUnderflow();
 	}
@@ -104,13 +104,13 @@ T QueueArray<T>::deQueue()
 	}
 }
 
-// Вывод очереди
+// Р’С‹РІРѕРґ РѕС‡РµСЂРµРґРё
 template <class T>
 void QueueArray<T>::print()
 {
 	if (isEmpty())
 	{
-		std::cout << "Пустая очередь";
+		std::cout << "РџСѓСЃС‚Р°СЏ РѕС‡РµСЂРµРґСЊ";
 	}
 	else
 	{

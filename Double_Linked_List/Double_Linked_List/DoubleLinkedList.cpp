@@ -1,20 +1,20 @@
+п»ї#include "DoubleLinkedList.h"
 #include "DoubleLinkedList.h"
-#include "DoubleLinkedList.h"
-//  DoubleLinkedList.cpp - Дважды связный список целых чисел - реализация методов класса  
+//  DoubleLinkedList.cpp - Р”РІР°Р¶РґС‹ СЃРІСЏР·РЅС‹Р№ СЃРїРёСЃРѕРє С†РµР»С‹С… С‡РёСЃРµР» - СЂРµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР°  
 //
 #include <iostream>
 
-// Конструктор "по умолчанию" - создание пустого списка - см. Описание класса
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ "РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" - СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ СЃРїРёСЃРєР° - СЃРј. РћРїРёСЃР°РЅРёРµ РєР»Р°СЃСЃР°
 // DoubleLinkedList::DoubleLinkedList(): count_(0), head_(nullptr), tail_(nullptr) {  }
 
-// Конструктор "копирования" – создание копии имеющегося списка
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ "РєРѕРїРёСЂРѕРІР°РЅРёСЏ" вЂ“ СЃРѕР·РґР°РЅРёРµ РєРѕРїРёРё РёРјРµСЋС‰РµРіРѕСЃСЏ СЃРїРёСЃРєР°
 DoubleLinkedList::DoubleLinkedList(const DoubleLinkedList & src): count_(0), head_(nullptr), tail_(nullptr)
 {
 	Node* temp = src.head_;
-	// Пока не конец списка:
+	// РџРѕРєР° РЅРµ РєРѕРЅРµС† СЃРїРёСЃРєР°:
 	while (temp != 0)
 	{   
-		// Копируем данные:
+		// РљРѕРїРёСЂСѓРµРј РґР°РЅРЅС‹Рµ:
 		insertTail(temp->item_);
 		temp = temp->next_;
 	}
@@ -27,17 +27,17 @@ void DoubleLinkedList::swap(DoubleLinkedList& other) noexcept
 	std::swap(count_, other.count_);
 }
 
-// Оператор присваивания (копирующее присваивание)
+// РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ (РєРѕРїРёСЂСѓСЋС‰РµРµ РїСЂРёСЃРІР°РёРІР°РЅРёРµ)
 DoubleLinkedList & DoubleLinkedList ::operator=(const DoubleLinkedList& right)
 {
 	if (this != &right) {
-		DoubleLinkedList temp(right); // temp копия right операнда
-		swap(temp);        // теперь this копия right, а temp копия this
-	}                    // удаление temp c данными старого this
+		DoubleLinkedList temp(right); // temp РєРѕРїРёСЏ right РѕРїРµСЂР°РЅРґР°
+		swap(temp);        // С‚РµРїРµСЂСЊ this РєРѕРїРёСЏ right, Р° temp РєРѕРїРёСЏ this
+	}                    // СѓРґР°Р»РµРЅРёРµ temp c РґР°РЅРЅС‹РјРё СЃС‚Р°СЂРѕРіРѕ this
 	return *this;
 }
 
-// Конструктор перемещения 
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ 
 DoubleLinkedList::DoubleLinkedList(DoubleLinkedList&& other) noexcept:
 	head_(other.head_),
 	tail_(other.tail_),
@@ -48,7 +48,7 @@ DoubleLinkedList::DoubleLinkedList(DoubleLinkedList&& other) noexcept:
 	other.count_ = 0;
 }
 
-// Оператор перемещающего присваивания 
+// РћРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµС‰Р°СЋС‰РµРіРѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ 
 DoubleLinkedList& DoubleLinkedList::operator=(DoubleLinkedList&& right) noexcept 
 {
 	if (this != &right) {
@@ -58,7 +58,7 @@ DoubleLinkedList& DoubleLinkedList::operator=(DoubleLinkedList&& right) noexcept
 }
 
 
-// Добавление сформированного узла в хвост списка
+// Р”РѕР±Р°РІР»РµРЅРёРµ СЃС„РѕСЂРјРёСЂРѕРІР°РЅРЅРѕРіРѕ СѓР·Р»Р° РІ С…РІРѕСЃС‚ СЃРїРёСЃРєР°
 void DoubleLinkedList::insertTail(Node* x)
 {
 	// x->prev_ == nullptr,  x->next_ == nullptr 
@@ -69,56 +69,56 @@ void DoubleLinkedList::insertTail(Node* x)
 	}
 	else
 	{
-		// список был пуст – новый элемент будет и первым, и последним
+		// СЃРїРёСЃРѕРє Р±С‹Р» РїСѓСЃС‚ вЂ“ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Р±СѓРґРµС‚ Рё РїРµСЂРІС‹Рј, Рё РїРѕСЃР»РµРґРЅРёРј
 		head_ = x;
 	}
 	tail_ = x;
 	count_++;
 }
 
-// Добавление сформированного узла в начало списка
+// Р”РѕР±Р°РІР»РµРЅРёРµ СЃС„РѕСЂРјРёСЂРѕРІР°РЅРЅРѕРіРѕ СѓР·Р»Р° РІ РЅР°С‡Р°Р»Рѕ СЃРїРёСЃРєР°
 void DoubleLinkedList::insertHead(Node* x)
 {   // x->prev_ == nullptr,  x->next_ == nullptr  
 	x->next_ = head_;
 	if (head_ != nullptr) {
-		// список был НЕ пуст – новый элемент будет и первым, и последним
+		// СЃРїРёСЃРѕРє Р±С‹Р» РќР• РїСѓСЃС‚ вЂ“ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Р±СѓРґРµС‚ Рё РїРµСЂРІС‹Рј, Рё РїРѕСЃР»РµРґРЅРёРј
 		head_->prev_ = x;
 	}
 	else {
-		// список был пуст – новый элемент будет и первым, и последним
+		// СЃРїРёСЃРѕРє Р±С‹Р» РїСѓСЃС‚ вЂ“ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Р±СѓРґРµС‚ Рё РїРµСЂРІС‹Рј, Рё РїРѕСЃР»РµРґРЅРёРј
 		tail_ = x;
 	}
 	head_ = x;
-	count_++;  // число элементов списка увеличилось
+	count_++;  // С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР° СѓРІРµР»РёС‡РёР»РѕСЃСЊ
 }
 
-// Удаление заданного узла 
+// РЈРґР°Р»РµРЅРёРµ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р° 
 void DoubleLinkedList::deleteNode(Node* x)
 {
 	if (x == nullptr) {
-		throw ("DoubleLinkedList::deleteNode  - неверно задан адрес удаляемого узла");
+		throw ("DoubleLinkedList::deleteNode  - РЅРµРІРµСЂРЅРѕ Р·Р°РґР°РЅ Р°РґСЂРµСЃ СѓРґР°Р»СЏРµРјРѕРіРѕ СѓР·Р»Р°");
 	}
 	if (x->prev_ != nullptr) {
-		// удаляется НЕ голова списка
+		// СѓРґР°Р»СЏРµС‚СЃСЏ РќР• РіРѕР»РѕРІР° СЃРїРёСЃРєР°
 		(x->prev_)->next_ = x->next_;
 	}
 	else {
-		// удаляется голова списка,  второй элемент становится первым
+		// СѓРґР°Р»СЏРµС‚СЃСЏ РіРѕР»РѕРІР° СЃРїРёСЃРєР°,  РІС‚РѕСЂРѕР№ СЌР»РµРјРµРЅС‚ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РїРµСЂРІС‹Рј
 		head_ = x->next_;
 	}
 	if (x->next_ != nullptr) {
-		// удаляется НЕ хвост
+		// СѓРґР°Р»СЏРµС‚СЃСЏ РќР• С…РІРѕСЃС‚
 		(x->next_)->prev_ = x->prev_;
 	}
 	else {
-		// удаляется хвост
+		// СѓРґР°Р»СЏРµС‚СЃСЏ С…РІРѕСЃС‚
 		tail_ = x->prev_;
 	}
 	delete x;      // 
-	count_--;     // число элементов списка уменьшилось
+	count_--;     // С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР° СѓРјРµРЅСЊС€РёР»РѕСЃСЊ
 }
 
-// Поиск узла (адрес) с заданным значением  
+// РџРѕРёСЃРє СѓР·Р»Р° (Р°РґСЂРµСЃ) СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј  
 DoubleLinkedList::Node* DoubleLinkedList::searchNode(int item)
 {
 	Node* x = head_;
@@ -128,23 +128,23 @@ DoubleLinkedList::Node* DoubleLinkedList::searchNode(int item)
 	return x;
 }
 
-// Замена информации узла на новое
+// Р—Р°РјРµРЅР° РёРЅС„РѕСЂРјР°С†РёРё СѓР·Р»Р° РЅР° РЅРѕРІРѕРµ
 DoubleLinkedList::Node* DoubleLinkedList::replaceNode(DoubleLinkedList::Node* x, int item)
 {
 	x->item_ = item;
 	return x;
 }
 
-// количество элементов списка
-//  int DoubleLinkedList::сount()const{ return count_; }
+// РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°
+//  int DoubleLinkedList::СЃount()const{ return count_; }
 
-// Доступ к информации головного узла списка
+// Р”РѕСЃС‚СѓРї Рє РёРЅС„РѕСЂРјР°С†РёРё РіРѕР»РѕРІРЅРѕРіРѕ СѓР·Р»Р° СЃРїРёСЃРєР°
 int DoubleLinkedList::headItem() const
 {
 	if (head_ != nullptr) {
 		return head_->item_;
 	}
-	throw ("headItem - список пуст!");
+	throw ("headItem - СЃРїРёСЃРѕРє РїСѓСЃС‚!");
 }
 
 int& DoubleLinkedList::headItem()
@@ -152,59 +152,59 @@ int& DoubleLinkedList::headItem()
 	if (head_ != nullptr) {
 		return head_->item_;
 	}
-	throw ("headItem - список пуст!");
+	throw ("headItem - СЃРїРёСЃРѕРє РїСѓСЃС‚!");
 }
 
-// Доступ к информации хвостового узла списка
+// Р”РѕСЃС‚СѓРї Рє РёРЅС„РѕСЂРјР°С†РёРё С…РІРѕСЃС‚РѕРІРѕРіРѕ СѓР·Р»Р° СЃРїРёСЃРєР°
 int DoubleLinkedList::tailItem() const
 {
 	if (tail_ != nullptr) {
 		return tail_->item_;
 	}
-	throw ("tailItem - список пуст!");
+	throw ("tailItem - СЃРїРёСЃРѕРє РїСѓСЃС‚!");
 }
 int& DoubleLinkedList::tailItem()
 {
 	if (tail_ != nullptr) {
 		return tail_->item_;
 	}
-	throw ("tailItem - список пуст!");
+	throw ("tailItem - СЃРїРёСЃРѕРє РїСѓСЃС‚!");
 }
 
-// Добавление элемента в голову списка
+// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РіРѕР»РѕРІСѓ СЃРїРёСЃРєР°
 void DoubleLinkedList::insertHead(int item)
-{   // создаем новый элемент списка и добавляем в голову 
+{   // СЃРѕР·РґР°РµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° Рё РґРѕР±Р°РІР»СЏРµРј РІ РіРѕР»РѕРІСѓ 
 	insertHead(new Node(item));
 }
 
 
-// Добавление элемента в хвост списка
+// Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ С…РІРѕСЃС‚ СЃРїРёСЃРєР°
 void DoubleLinkedList::insertTail(int item)
-{   // создаем новый элемент списка и добавляем в хвост 
+{   // СЃРѕР·РґР°РµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° Рё РґРѕР±Р°РІР»СЏРµРј РІ С…РІРѕСЃС‚ 
 	insertTail(new Node(item));
 }
 
-// Удаление элемента с головы списка
+// РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃ РіРѕР»РѕРІС‹ СЃРїРёСЃРєР°
 bool DoubleLinkedList::deleteHead()
 {
 	if (head_ == nullptr) {
-		return 0;  // список пуст, удалений нет
+		return 0;  // СЃРїРёСЃРѕРє РїСѓСЃС‚, СѓРґР°Р»РµРЅРёР№ РЅРµС‚
 	}
 	deleteNode(head_);
-	return 1;      // список был НЕ пуст, удаление головы
+	return 1;      // СЃРїРёСЃРѕРє Р±С‹Р» РќР• РїСѓСЃС‚, СѓРґР°Р»РµРЅРёРµ РіРѕР»РѕРІС‹
 }
 
-// Удаление элемента из хвоста списка
+// РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· С…РІРѕСЃС‚Р° СЃРїРёСЃРєР°
 bool DoubleLinkedList::deleteTail()
 {
 	if (tail_ == nullptr) {
-		return 0;  // список пуст, удалений нет
+		return 0;  // СЃРїРёСЃРѕРє РїСѓСЃС‚, СѓРґР°Р»РµРЅРёР№ РЅРµС‚
 	}
 	deleteNode(tail_);
-	return 1; // список был НЕ пуст, удаление хвоста
+	return 1; // СЃРїРёСЃРѕРє Р±С‹Р» РќР• РїСѓСЃС‚, СѓРґР°Р»РµРЅРёРµ С…РІРѕСЃС‚Р°
 }
 
-// Удаление узла с заданным значением
+// РЈРґР°Р»РµРЅРёРµ СѓР·Р»Р° СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј
 bool DoubleLinkedList::deleteItem(const int item)
 {
 	Node* temp = searchNode(item);
@@ -213,17 +213,17 @@ bool DoubleLinkedList::deleteItem(const int item)
 		return 0;
 	}
 	deleteNode(temp);
-	return 1; // список был НЕ пуст, удаление узла с заданным значением
+	return 1; // СЃРїРёСЃРѕРє Р±С‹Р» РќР• РїСѓСЃС‚, СѓРґР°Р»РµРЅРёРµ СѓР·Р»Р° СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј
 }
 
-// Поиск записи с заданным значением  
+// РџРѕРёСЃРє Р·Р°РїРёСЃРё СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј  
 bool DoubleLinkedList::searchItem(int item)
-{   // возвращаем TRUE, если узел найден 
+{   // РІРѕР·РІСЂР°С‰Р°РµРј TRUE, РµСЃР»Рё СѓР·РµР» РЅР°Р№РґРµРЅ 
 	return (searchNode(item) != nullptr);
 }
 
 
-// Замена информации узла на новое
+// Р—Р°РјРµРЅР° РёРЅС„РѕСЂРјР°С†РёРё СѓР·Р»Р° РЅР° РЅРѕРІРѕРµ
 bool DoubleLinkedList::replaceItem(int itemOld, int itemNew)
 {
 	Node* temp = searchNode(itemOld);
@@ -235,30 +235,30 @@ bool DoubleLinkedList::replaceItem(int itemOld, int itemNew)
 	return 0;
 }
 
-// Вывод элементов списка в текстовом виде в стандартный выходной поток 
+// Р’С‹РІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР° РІ С‚РµРєСЃС‚РѕРІРѕРј РІРёРґРµ РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє 
 void DoubleLinkedList::outAll()
 {
-	Node* current = head_;       // Указатель на элемент
+	Node* current = head_;       // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЌР»РµРјРµРЅС‚
 	while (current != nullptr) {
 		std::cout << current->item_ << ' ';
-		current = current->next_;  // Переход к следующему элементу
+		current = current->next_;  // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЌР»РµРјРµРЅС‚Сѓ
 	}
 	std::cout << std::endl;
 }
 
-// Деструктор списка	
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ СЃРїРёСЃРєР°	
 DoubleLinkedList::~DoubleLinkedList()
 {
-	Node* current = nullptr;   // указатель на элемент, подлежащий удалению
-	Node* next = head_;        // указатель на следующий элемент
-	while (next != nullptr) {  // пока есть еще элементы в списке
+	Node* current = nullptr;   // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЌР»РµРјРµРЅС‚, РїРѕРґР»РµР¶Р°С‰РёР№ СѓРґР°Р»РµРЅРёСЋ
+	Node* next = head_;        // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
+	while (next != nullptr) {  // РїРѕРєР° РµСЃС‚СЊ РµС‰Рµ СЌР»РµРјРµРЅС‚С‹ РІ СЃРїРёСЃРєРµ
 		current = next;
-		next = next->next_;    // переход к следующему элементу
-		delete current;        // освобождение памяти
+		next = next->next_;    // РїРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЌР»РµРјРµРЅС‚Сѓ
+		delete current;        // РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
 	}
 }
 
-// Добавление в хвост исходного списка элементов списка, заданного параметром метода
+// Р”РѕР±Р°РІР»РµРЅРёРµ РІ С…РІРѕСЃС‚ РёСЃС…РѕРґРЅРѕРіРѕ СЃРїРёСЃРєР° СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°, Р·Р°РґР°РЅРЅРѕРіРѕ РїР°СЂР°РјРµС‚СЂРѕРј РјРµС‚РѕРґР°
 void DoubleLinkedList::add(DoubleLinkedList& list)
 {
 	if (list.head_ != nullptr)
@@ -279,7 +279,7 @@ void DoubleLinkedList::add(DoubleLinkedList& list)
 	list.tail_ = nullptr;
 }
 
-// Оператор сравнения ==
+// РћРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ ==
 bool DoubleLinkedList::operator==(const DoubleLinkedList& list)
 {
 	bool isTrue = false;
@@ -300,13 +300,13 @@ bool DoubleLinkedList::operator==(const DoubleLinkedList& list)
 	return isTrue;
 }
 
-//  Оператор вывода <<
+//  РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° <<
 std::ostream& operator<<(std::ostream& out, DoubleLinkedList& list)
 {
 	DoubleLinkedList::Node* current = list.head_;
 	if (current == nullptr)
 	{
-		out << "пустой список" << '\n';
+		out << "РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє" << '\n';
 	}
 	while (current != nullptr)
 	{

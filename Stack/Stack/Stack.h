@@ -1,4 +1,4 @@
-#ifndef __STACK
+п»ї#ifndef __STACK
 #define __STACK
 #include "exceptions.h"
 
@@ -7,16 +7,16 @@ class Stack
 {
 public:
 	virtual ~Stack() {}
-	virtual void push(const T& e) = 0; // Добавление элемента в стек
-	virtual const T& pop() = 0; // Удаление и возвращение верхнего элемента
-	virtual bool isEmpty() = 0; // Проверка стека на пустоту 
+	virtual void push(const T& e) = 0; // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚РµРє
+	virtual const T& pop() = 0; // РЈРґР°Р»РµРЅРёРµ Рё РІРѕР·РІСЂР°С‰РµРЅРёРµ РІРµСЂС…РЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
+	virtual bool isEmpty() = 0; // РџСЂРѕРІРµСЂРєР° СЃС‚РµРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ 
 };
 
 template <class T>
 class StackArray : public Stack<T>
 {
 public:
-	StackArray(size_t size = 100); // size задает размер стека "по умолчанию"
+	StackArray(size_t size = 100); // size Р·Р°РґР°РµС‚ СЂР°Р·РјРµСЂ СЃС‚РµРєР° "РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ"
 	StackArray(const StackArray<T>& src); // = delete;
 	//StackArray(StackArray<T>&& src);
 	//StackArray& operator=(const StackArray<T>& src); // = delete;
@@ -27,25 +27,25 @@ public:
 	const T top();
 	bool isEmpty() { return top_ == 0; };
 private:
-	T* array_; // массив элементов стека: !!! array_[0] – не используется, top_ от 1 до size_
-	size_t top_; // вершина стека, элемент занесенный в стек последним
-	size_t size_; // размер стека
+	T* array_; // РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚РµРєР°: !!! array_[0] вЂ“ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, top_ РѕС‚ 1 РґРѕ size_
+	size_t top_; // РІРµСЂС€РёРЅР° СЃС‚РµРєР°, СЌР»РµРјРµРЅС‚ Р·Р°РЅРµСЃРµРЅРЅС‹Р№ РІ СЃС‚РµРє РїРѕСЃР»РµРґРЅРёРј
+	size_t size_; // СЂР°Р·РјРµСЂ СЃС‚РµРєР°
 	void swap(StackArray<T>& src);
 };
 
-// Конструктор копирования – создание копии имеющегося списка, если не указано delete
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ вЂ“ СЃРѕР·РґР°РЅРёРµ РєРѕРїРёРё РёРјРµСЋС‰РµРіРѕСЃСЏ СЃРїРёСЃРєР°, РµСЃР»Рё РЅРµ СѓРєР°Р·Р°РЅРѕ delete
 template <class T>
 StackArray<T>::StackArray(const StackArray<T>& src) :
 	size_(src.size_),
 	top_(src.top_)
 {
-	try {// !!! array_[0] – не используется, top_ от 1 до size_
+	try {// !!! array_[0] вЂ“ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, top_ РѕС‚ 1 РґРѕ size_
 		array_ = new T[src.size_ + 1];
 	}
 	catch (...) {
 		throw WrongStackSize();
 	}
-	// копирование массива
+	// РєРѕРїРёСЂРѕРІР°РЅРёРµ РјР°СЃСЃРёРІР°
 	for (size_t i = 1; i < src.top_; i++) {
 		array_[i] = src.array_[i];
 	}
@@ -63,12 +63,12 @@ template <class T>
 StackArray<T>::StackArray(size_t size) :
 	size_(size),
 	top_(0)
-{ // !!! array_[0] – не используется, top_ от 1 до size_
+{ // !!! array_[0] вЂ“ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, top_ РѕС‚ 1 РґРѕ size_
 	try {
-		array_ = new T[size + 1]; // пытаемся заказать память под элементы стека...
+		array_ = new T[size + 1]; // РїС‹С‚Р°РµРјСЃСЏ Р·Р°РєР°Р·Р°С‚СЊ РїР°РјСЏС‚СЊ РїРѕРґ СЌР»РµРјРµРЅС‚С‹ СЃС‚РµРєР°...
 	}
-	catch (...) { // если что-то случилось (например, размер слишком большой
-		throw WrongStackSize(); // или отрицательный) - возникает исключительная ситуация
+	catch (...) { // РµСЃР»Рё С‡С‚Рѕ-С‚Рѕ СЃР»СѓС‡РёР»РѕСЃСЊ (РЅР°РїСЂРёРјРµСЂ, СЂР°Р·РјРµСЂ СЃР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№
+		throw WrongStackSize(); // РёР»Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№) - РІРѕР·РЅРёРєР°РµС‚ РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅР°СЏ СЃРёС‚СѓР°С†РёСЏ
 	}
 }
 
@@ -76,18 +76,18 @@ template <class T>
 void StackArray<T>::push(const T & e)
 {
 	if (top_ == size_) {
-		throw StackOverflow(); // нет места для нового элемента
+		throw StackOverflow(); // РЅРµС‚ РјРµСЃС‚Р° РґР»СЏ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 	}
-	array_[++top_] = e; // занесение элемента в стек
+	array_[++top_] = e; // Р·Р°РЅРµСЃРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚РµРє
 }
 
 template <class T>
 const T & StackArray<T>::pop()
 {
 	if (isEmpty()) { // (top_ == 0)
-		throw StackUnderflow(); // стек пуст
+		throw StackUnderflow(); // СЃС‚РµРє РїСѓСЃС‚
 	}
-	return array_[top_--]; // Элемент физически остается в стеке, но больше "не доступен"
+	return array_[top_--]; // Р­Р»РµРјРµРЅС‚ С„РёР·РёС‡РµСЃРєРё РѕСЃС‚Р°РµС‚СЃСЏ РІ СЃС‚РµРєРµ, РЅРѕ Р±РѕР»СЊС€Рµ "РЅРµ РґРѕСЃС‚СѓРїРµРЅ"
 }
 
 template <class T>

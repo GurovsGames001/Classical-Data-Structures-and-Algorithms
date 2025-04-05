@@ -1,12 +1,12 @@
-#ifndef _FUNCTIONS
+п»ї#ifndef _FUNCTIONS
 #define _FUNCTIONS
 #include <iterator>
 #include <iostream>
 
-// Тестирование сортировки
+// РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё
 void testQuickSort();
 
-// Вывод массива
+// Р’С‹РІРѕРґ РјР°СЃСЃРёРІР°
 template<class T>
 void print(const T* begin, const T* end)
 {
@@ -14,7 +14,7 @@ void print(const T* begin, const T* end)
 	std::cout << std::endl;
 }
 
-// Проверка упорядоченности массива
+// РџСЂРѕРІРµСЂРєР° СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅРѕСЃС‚Рё РјР°СЃСЃРёРІР°
 template<class T>
 bool isOrdered(const T* begin, const T* end)
 {

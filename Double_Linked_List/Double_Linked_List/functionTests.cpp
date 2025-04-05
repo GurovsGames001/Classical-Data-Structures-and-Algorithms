@@ -1,8 +1,8 @@
-#include "DoubleLinkedList.h";
+п»ї#include "DoubleLinkedList.h";
 
 void testInsertTail()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList sourceList1;
 	sourceList1.insertHead(3);
 	sourceList1.insertHead(2);
@@ -14,68 +14,68 @@ void testInsertTail()
 	testList1.insertHead(1);
 	DoubleLinkedList testList2;
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
 	testList1.insertTail(3);
-	answer = (testList1 == sourceList1) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода insertTail: тест " << answer << '\n';
+	answer = (testList1 == sourceList1) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° insertTail: С‚РµСЃС‚ " << answer << '\n';
 	testList2.insertTail(1);
-	answer = (testList2 == sourceList2) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода insertTail: тест " << answer << '\n';
+	answer = (testList2 == sourceList2) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° insertTail: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testDeleteTail()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList testList1;
 	testList1.insertHead(2);
 	testList1.insertHead(1);
 	DoubleLinkedList testList2;
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
-	answer = (testList1.deleteTail() == true) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода deleteTail: тест " << answer << '\n';
-	answer = (testList2.deleteTail() == false) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода deleteTail: тест " << answer << '\n';
+	answer = (testList1.deleteTail() == true) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° deleteTail: С‚РµСЃС‚ " << answer << '\n';
+	answer = (testList2.deleteTail() == false) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° deleteTail: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testDeleteItem()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList testList1;
 	testList1.insertHead(3);
 	testList1.insertHead(2);
 	testList1.insertHead(1);
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
-	answer = (testList1.deleteItem(3) == true) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода deleteItem: тест " << answer << '\n';
-	answer = (testList1.deleteItem(1) == true) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода deleteItem: тест " << answer << '\n';
-	answer = (testList1.deleteItem(4) == false) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода deleteItem: тест " << answer << '\n';
+	answer = (testList1.deleteItem(3) == true) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° deleteItem: С‚РµСЃС‚ " << answer << '\n';
+	answer = (testList1.deleteItem(1) == true) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° deleteItem: С‚РµСЃС‚ " << answer << '\n';
+	answer = (testList1.deleteItem(4) == false) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° deleteItem: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testReplaceItem()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList testList1;
 	testList1.insertHead(2);
 	testList1.insertHead(1);
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
-	answer = (testList1.replaceItem(2, 3) == true) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода replaceItem: тест " << answer << '\n';
-	answer = (testList1.replaceItem(4, 5) == false) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода replaceItem: тест " << answer << '\n';
+	answer = (testList1.replaceItem(2, 3) == true) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° replaceItem: С‚РµСЃС‚ " << answer << '\n';
+	answer = (testList1.replaceItem(4, 5) == false) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° replaceItem: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testAdd()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList sourceList1;
 	sourceList1.insertHead(4);
 	sourceList1.insertHead(3);
@@ -90,19 +90,19 @@ void testAdd()
 	DoubleLinkedList testList3;
 	DoubleLinkedList emptyList4;
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
 	testList1.add(testList2);
-	answer = ((testList1 == sourceList1) && (testList2 == emptyList4)) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода add: тест " << answer << '\n';
+	answer = ((testList1 == sourceList1) && (testList2 == emptyList4)) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° add: С‚РµСЃС‚ " << answer << '\n';
 	testList3.add(testList1);
-	answer = ((testList3 == sourceList1) && (testList1 == emptyList4)) ? "пройден" : "не пройден";
-	std::cout << "Проверка метода add: тест " << answer << '\n';
+	answer = ((testList3 == sourceList1) && (testList1 == emptyList4)) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РјРµС‚РѕРґР° add: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testCompareOperator()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList testList1;
 	testList1.insertHead(2);
 	testList1.insertHead(1);
@@ -112,23 +112,23 @@ void testCompareOperator()
 	DoubleLinkedList testList3;
 	testList3.insertHead(1);
 
-	// Выполнение методов/функций и Проверка
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
 	std::string answer = "";
-	answer = ((testList1 == testList2) == true) ? "пройден" : "не пройден";
-	std::cout << "Проверка оператора сравнения ==: тест " << answer << '\n';
-	answer = ((testList1 == testList3) == false) ? "пройден" : "не пройден";
-	std::cout << "Проверка оператора сравнения ==: тест " << answer << '\n';
+	answer = ((testList1 == testList2) == true) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ ==: С‚РµСЃС‚ " << answer << '\n';
+	answer = ((testList1 == testList3) == false) ? "РїСЂРѕР№РґРµРЅ" : "РЅРµ РїСЂРѕР№РґРµРЅ";
+	std::cout << "РџСЂРѕРІРµСЂРєР° РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ ==: С‚РµСЃС‚ " << answer << '\n';
 }
 
 void testOutOperator()
 {
-	// Создание списков для проверки
+	// РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєРѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	DoubleLinkedList testList1;
 	testList1.insertHead(2);
 	testList1.insertHead(1);
 	DoubleLinkedList testList2;
 
-	// Выполнение методов/функций и Проверка
-	std::cout << "Ожидаемый результат: 1 2        " << "Полученный результат: " << testList1 << '\n';
-	std::cout << "Ожидаемый результат: пустой список            " << "Полученный результат: " << testList2 << '\n';
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ/С„СѓРЅРєС†РёР№ Рё РџСЂРѕРІРµСЂРєР°
+	std::cout << "РћР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚: 1 2        " << "РџРѕР»СѓС‡РµРЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚: " << testList1 << '\n';
+	std::cout << "РћР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚: РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє            " << "РџРѕР»СѓС‡РµРЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚: " << testList2 << '\n';
 }
